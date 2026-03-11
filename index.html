@@ -20,11 +20,9 @@
   --green-light:#52B788;
 }
 html{scroll-behavior:smooth;}
-body{background:var(--bg);font-family:'Crimson Pro',serif;color:var(--white);overflow-x:hidden;cursor:none;}
+body{background:var(--bg);font-family:'Crimson Pro',serif;color:var(--white);overflow-x:hidden;}
 
-/* CUSTOM CURSOR */
-.cursor{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;}
-.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(212,144,10,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;}
+
 
 /* NOISE TEXTURE OVERLAY */
 body::before{
@@ -411,8 +409,8 @@ footer{
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+
+
 
 <!-- NAV -->
 <nav>
@@ -445,7 +443,7 @@ footer{
     </div>
     <div class="hero-cta">
       <a href="#work" class="btn-primary">View Work →</a>
-      <a href="mailto:dhirajmpathori2001@gmail.com" class="btn-secondary">Get in Touch</a>
+      <a href="/cdn-cgi/l/email-protection#e084888992818a8d908194888f9289d2d0d0d1a0878d81898cce838f8d" class="btn-secondary">Get in Touch</a>
     </div>
   </div>
   <div class="hero-scroll-indicator">
@@ -594,50 +592,8 @@ footer{
   </div>
   <div class="projects-grid fade-in">
 
-    <!-- Featured: GenAI -->
-    <div class="project-card featured">
-      <div>
-        <div class="project-num">01 / 03</div>
-        <div class="project-category">Consulting · Enterprise Product</div>
-        <div class="project-title">GENAI ADOPTION FRAMEWORK</div>
-        <p class="project-desc">Designed a 4-phase GenAI adoption lifecycle for a global enterprise workforce — from hypothesis testing across 1,500+ employee signals in 45+ countries to a behavioral persona segmentation enabling targeted rollout for 700K+ users across 6 industries.</p>
-        <div class="project-meta">
-          <span class="project-tag">Accenture S&amp;C</span>
-          <span class="project-tag">700K+ Users</span>
-          <span class="project-tag">5 Personas</span>
-          <span class="project-tag">4-Phase Lifecycle</span>
-          <span class="project-tag">25+ Firms</span>
-        </div>
-        <a href="https://docs.google.com/presentation/d/1rU3ese4QdLXqjVWLLOgwTx4nAddwIrYJ/edit" class="project-link" target="_blank">VIEW CASE STUDY →</a>
-      </div>
-      <div class="featured-visual">
-        <div class="grid-overlay"></div>
-        <div class="featured-visual-inner">
-          <div class="stat-display">700K+</div>
-          <div>ENTERPRISE USERS REACHED</div>
-          <div style="margin-top:8px;color:var(--amber);">45 COUNTRIES · 6 INDUSTRIES</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LILA -->
-    <div class="project-card" href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" target="_blank" onclick="window.open('https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/','_blank')">
-      <div class="project-num">02 / 03</div>
-      <div class="project-category">Game Analytics · Data Engineering</div>
-      <div class="project-title">LILA BLACK PLAYER JOURNEY VISUALIZER</div>
-      <p class="project-desc">Built a browser-based game analytics tool processing 89,000+ player telemetry events across 5 days of production data from an extraction shooter — visualizing movement trails, kill zones, heatmaps, and match replay for Level Designers.</p>
-      <div class="project-meta">
-        <span class="project-tag">Streamlit</span>
-        <span class="project-tag">Plotly</span>
-        <span class="project-tag">PyArrow</span>
-        <span class="project-tag">89K Events</span>
-        <span class="project-tag">3 Maps</span>
-      </div>
-      <a href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" class="project-link" target="_blank">OPEN LIVE TOOL →</a>
-    </div>
-
-    <!-- ShaktiDrive -->
-    <div class="project-card" onclick="window.open('https://dhirajmohanpathori.github.io/shakti-drive-case-study','_blank')">
+    <!-- ShaktiDrive (Featured) -->
+    <div class="project-card featured" onclick="window.open('https://dhirajmohanpathori.github.io/shakti-drive-case-study','_blank')">
       <div class="project-num">03 / 03</div>
       <div class="project-category">Human-Centered Design · Social Impact</div>
       <div class="project-title">SHAKTIDRIVE — WOMEN DRIVER ENABLEMENT</div>
@@ -681,7 +637,49 @@ footer{
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- LILA -->
+    <div class="project-card" href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" target="_blank" onclick="window.open('https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/','_blank')">
+      <div class="project-num">02 / 03</div>
+      <div class="project-category">Game Analytics · Data Engineering</div>
+      <div class="project-title">LILA BLACK PLAYER JOURNEY VISUALIZER</div>
+      <p class="project-desc">Built a browser-based game analytics tool processing 89,000+ player telemetry events across 5 days of production data from an extraction shooter — visualizing movement trails, kill zones, heatmaps, and match replay for Level Designers.</p>
+      <div class="project-meta">
+        <span class="project-tag">Streamlit</span>
+        <span class="project-tag">Plotly</span>
+        <span class="project-tag">PyArrow</span>
+        <span class="project-tag">89K Events</span>
+        <span class="project-tag">3 Maps</span>
+      </div>
+      <a href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" class="project-link" target="_blank">OPEN LIVE TOOL →</a>
+    </div>
+
+    <!-- GenAI -->
+    <div class="project-card">
+      <div>
+        <div class="project-num">01 / 03</div>
+        <div class="project-category">Consulting · Enterprise Product</div>
+        <div class="project-title">GENAI ADOPTION FRAMEWORK</div>
+        <p class="project-desc">Designed a 4-phase GenAI adoption lifecycle for a global enterprise workforce — from hypothesis testing across 1,500+ employee signals in 45+ countries to a behavioral persona segmentation enabling targeted rollout for 700K+ users across 6 industries.</p>
+        <div class="project-meta">
+          <span class="project-tag">Accenture S&amp;C</span>
+          <span class="project-tag">700K+ Users</span>
+          <span class="project-tag">5 Personas</span>
+          <span class="project-tag">4-Phase Lifecycle</span>
+          <span class="project-tag">25+ Firms</span>
+        </div>
+        <a href="https://docs.google.com/presentation/d/1rU3ese4QdLXqjVWLLOgwTx4nAddwIrYJ/edit" class="project-link" target="_blank">VIEW CASE STUDY →</a>
+      </div>
+      <div class="featured-visual">
+        <div class="grid-overlay"></div>
+        <div class="featured-visual-inner">
+          <div class="stat-display">700K+</div>
+          <div>ENTERPRISE USERS REACHED</div>
+          <div style="margin-top:8px;color:var(--amber);">45 COUNTRIES · 6 INDUSTRIES</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-grid">
     <div class="fade-in">
@@ -689,9 +687,9 @@ footer{
       <p class="contact-sub">Open to PM internship and full-time conversations — Fintech, GenAI, B2B SaaS, and consulting-led product roles. I respond fast.</p>
     </div>
     <div class="contact-links fade-in">
-      <a href="mailto:dhirajmpathori2001@gmail.com" class="contact-link">
+      <a href="/cdn-cgi/l/email-protection#98fcf0f1eaf9f2f5e8f9ecf0f7eaf1aaa8a8a9d8fff5f9f1f4b6fbf7f5" class="contact-link">
         <div class="cl-icon">EMAIL</div>
-        <div><div class="cl-text">dhirajmpathori2001@gmail.com</div><div class="cl-sub">Best way to reach me</div></div>
+        <div><div class="cl-text"><span class="__cf_email__" data-cfemail="197d71706b78737469786d71766b702b292928597e74787075377a7674">[email&#160;protected]</span></div><div class="cl-sub">Best way to reach me</div></div>
       </a>
       <a href="tel:+919707801123" class="contact-link">
         <div class="cl-icon">PHONE</div>
@@ -714,7 +712,7 @@ footer{
   <div class="footer-tag">THE ANALYTICAL PM</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Cursor
 const cursor=document.getElementById('cursor');
 const ring=document.getElementById('cursorRing');
@@ -724,14 +722,4 @@ function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring
 animRing();
 document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(2)';ring.style.borderColor='rgba(212,144,10,.6)';});
-  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(212,144,10,.4)';});
-});
-
-// Scroll fade-in
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:0.08});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
-</script>
-</body>
-</html>
+  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';
