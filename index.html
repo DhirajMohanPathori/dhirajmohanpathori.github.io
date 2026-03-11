@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhiraj Mohan Pathori — Product Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0A0A08;
+  --surface:#111110;
+  --surface2:#1A1A17;
+  --amber:#D4900A;
+  --amber-light:#F0B429;
+  --white:#F5F3EE;
+  --muted:#6B6960;
+  --border:#252520;
+  --green:#2D6A4F;
+  --green-light:#52B788;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);font-family:'Crimson Pro',serif;color:var(--white);overflow-x:hidden;cursor:none;}
+
+/* CUSTOM CURSOR */
+.cursor{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(212,144,10,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;}
+
+/* NOISE TEXTURE OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.4;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(to bottom,rgba(10,10,8,.95),transparent);
+  backdrop-filter:blur(2px);
+}
+.nav-logo{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;letter-spacing:3px;color:var(--amber);
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:32px;}
+.nav-link{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.65rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-link:hover{color:var(--white);}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:flex-end;
+  padding:0 60px 80px;position:relative;overflow:hidden;
+}
+
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212,144,10,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,144,10,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+
+.hero-glow{
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(212,144,10,.06) 0%,transparent 70%);
+  top:-100px;right:-100px;
+  pointer-events:none;
+}
+
+.hero-content{position:relative;z-index:2;width:100%;}
+
+.hero-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.68rem;letter-spacing:4px;color:var(--amber);
+  text-transform:uppercase;margin-bottom:24px;
+  display:flex;align-items:center;gap:16px;
+}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--amber);}
+
+.hero-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(72px,10vw,140px);
+  color:var(--white);line-height:.92;
+  letter-spacing:2px;margin-bottom:8px;
+}
+.hero-name span{color:var(--amber);}
+
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(28px,4vw,52px);
+  color:var(--muted);line-height:1;
+  letter-spacing:3px;margin-bottom:40px;
+}
+
+.hero-bio{
+  max-width:500px;
+  font-size:1.1rem;font-weight:300;
+  color:rgba(245,243,238,.6);line-height:1.7;
+  margin-bottom:48px;
+  font-style:italic;
+}
+
+.hero-chips{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px;
+}
+.chip{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.62rem;letter-spacing:1.5px;
+  padding:5px 12px;
+  border:1px solid var(--border);
+  color:var(--muted);
+  border-radius:2px;
+  transition:all .2s;
+}
+.chip.gold{border-color:rgba(212,144,10,.4);color:var(--amber);}
+
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;letter-spacing:2px;text-transform:uppercase;
+  padding:14px 28px;
+  background:var(--amber);color:var(--bg);
+  border:none;text-decoration:none;
+  transition:background .2s,transform .2s;
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--amber-light);transform:translateY(-2px);}
+.btn-secondary{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;letter-spacing:2px;text-transform:uppercase;
+  padding:14px 28px;
+  background:transparent;color:var(--white);
+  border:1px solid var(--border);
+  text-decoration:none;display:inline-block;
+  transition:border-color .2s,transform .2s;
+}
+.btn-secondary:hover{border-color:var(--white);transform:translateY(-2px);}
+
+.hero-scroll-indicator{
+  position:absolute;right:60px;bottom:80px;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  color:var(--muted);
+  font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:2px;
+  writing-mode:vertical-rl;
+}
+.scroll-track{width:1px;height:60px;background:var(--border);position:relative;overflow:hidden;}
+.scroll-track::after{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:30px;background:var(--amber);
+  animation:scrollTrack 2s ease-in-out infinite;
+}
+@keyframes scrollTrack{0%{transform:translateY(-100%);}100%{transform:translateY(200%);}}
+
+/* POSITIONING STRIP */
+.positioning{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:28px 60px;
+  display:flex;gap:0;overflow:hidden;
+  position:relative;z-index:2;
+}
+.pos-item{
+  flex:1;padding:0 32px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:4px;
+}
+.pos-item:first-child{padding-left:0;}
+.pos-item:last-child{border-right:none;}
+.pos-label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
+.pos-val{font-size:1rem;font-weight:600;color:var(--white);}
+.pos-sub{font-size:.8rem;color:var(--muted);font-style:italic;}
+
+/* SECTION COMMONS */
+.section{padding:100px 60px;position:relative;z-index:2;}
+.section-header{margin-bottom:64px;}
+.section-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.62rem;letter-spacing:4px;color:var(--amber);
+  text-transform:uppercase;margin-bottom:12px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-num::after{content:'';flex:1;height:1px;background:var(--border);max-width:80px;}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(36px,5vw,64px);
+  color:var(--white);letter-spacing:2px;line-height:1;
+}
+.section-title em{color:var(--amber);font-style:normal;}
+
+/* ABOUT — split layout */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+}
+.about-text p{
+  font-size:1.1rem;font-weight:300;color:rgba(245,243,238,.7);
+  line-height:1.8;margin-bottom:20px;
+}
+.about-text p strong{color:var(--white);font-weight:600;}
+.about-text p em{color:var(--amber);font-style:italic;}
+
+.skills-stack{display:flex;flex-direction:column;gap:20px;}
+.skill-group{}
+.skill-group-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.6rem;letter-spacing:3px;color:var(--amber);
+  text-transform:uppercase;margin-bottom:10px;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.skill-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.65rem;padding:4px 10px;
+  border:1px solid var(--border);color:var(--muted);
+  transition:all .2s;
+}
+.skill-tag:hover{border-color:var(--amber);color:var(--amber);}
+
+/* EXPERIENCE TIMELINE */
+.exp-list{display:flex;flex-direction:column;gap:0;}
+.exp-item{
+  display:grid;grid-template-columns:200px 1fr;
+  border-bottom:1px solid var(--border);
+  padding:36px 0;
+  transition:background .2s;
+}
+.exp-item:hover{background:var(--surface);}
+.exp-item:first-child{border-top:1px solid var(--border);}
+.exp-left{padding-right:40px;}
+.exp-period{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.65rem;letter-spacing:1px;color:var(--amber);
+  margin-bottom:6px;
+}
+.exp-company{font-size:.85rem;font-weight:600;color:var(--white);}
+.exp-type{font-size:.75rem;color:var(--muted);font-style:italic;margin-top:3px;}
+.exp-right{}
+.exp-role{font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:10px;}
+.exp-bullets{display:flex;flex-direction:column;gap:6px;}
+.exp-bullet{
+  font-size:.88rem;color:rgba(245,243,238,.6);
+  display:flex;gap:10px;line-height:1.5;
+}
+.exp-bullet::before{content:'—';color:var(--amber);flex-shrink:0;font-family:'IBM Plex Mono',monospace;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.exp-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.58rem;
+  padding:3px 8px;border:1px solid var(--border);color:var(--muted);
+}
+
+/* PROJECTS */
+.projects-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);
+}
+.project-card{
+  background:var(--bg);padding:40px;
+  position:relative;overflow:hidden;
+  transition:background .2s;
+  text-decoration:none;color:inherit;
+  display:block;
+}
+.project-card:hover{background:var(--surface);}
+.project-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:var(--amber);
+  transform:scaleX(0);transition:transform .3s;transform-origin:left;
+}
+.project-card:hover::before{transform:scaleX(1);}
+.project-card.featured{
+  grid-column:span 2;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.project-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.62rem;letter-spacing:3px;color:var(--muted);
+  margin-bottom:16px;
+}
+.project-category{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.6rem;letter-spacing:2px;color:var(--amber);
+  text-transform:uppercase;margin-bottom:10px;
+}
+.project-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(24px,3vw,40px);letter-spacing:1px;
+  color:var(--white);margin-bottom:14px;line-height:1.05;
+}
+.project-desc{
+  font-size:.92rem;color:rgba(245,243,238,.55);
+  line-height:1.7;margin-bottom:20px;font-weight:300;
+}
+.project-meta{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;
+}
+.project-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.58rem;
+  padding:3px 8px;border:1px solid var(--border);color:var(--muted);
+}
+.project-link{
+  font-family:'IBM Plex Mono',monospace;font-size:.65rem;
+  letter-spacing:2px;color:var(--amber);
+  display:flex;align-items:center;gap:8px;
+  transition:gap .2s;
+}
+.project-card:hover .project-link{gap:14px;}
+
+.featured-visual{
+  height:260px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.featured-visual-inner{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.62rem;letter-spacing:2px;color:var(--muted);
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.stat-display{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.5rem;color:var(--amber);line-height:1;
+}
+.featured-visual .grid-overlay{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(212,144,10,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,144,10,.05) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+
+/* EDUCATION */
+.edu-list{display:flex;flex-direction:column;gap:0;}
+.edu-item{
+  display:grid;grid-template-columns:180px 1fr;
+  border-bottom:1px solid var(--border);padding:28px 0;
+}
+.edu-item:first-child{border-top:1px solid var(--border);}
+.edu-year{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--amber);letter-spacing:1px;}
+.edu-inst{font-size:.92rem;font-weight:600;color:var(--white);margin-bottom:3px;}
+.edu-degree{font-size:.82rem;color:var(--muted);font-style:italic;}
+.edu-note{font-size:.78rem;color:rgba(245,243,238,.45);margin-top:6px;line-height:1.5;}
+
+/* CONTACT */
+.contact-section{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  padding:100px 60px;
+  position:relative;z-index:2;
+}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.contact-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(36px,5vw,72px);letter-spacing:2px;
+  color:var(--white);line-height:.95;margin-bottom:24px;
+}
+.contact-title em{color:var(--amber);font-style:normal;}
+.contact-sub{font-size:1rem;color:var(--muted);font-weight:300;line-height:1.7;font-style:italic;}
+.contact-links{display:flex;flex-direction:column;gap:16px;}
+.contact-link{
+  display:flex;align-items:center;gap:16px;
+  text-decoration:none;padding:16px 20px;
+  border:1px solid var(--border);
+  transition:border-color .2s,background .2s;
+  color:inherit;
+}
+.contact-link:hover{border-color:var(--amber);background:rgba(212,144,10,.04);}
+.cl-icon{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:2px;color:var(--amber);width:60px;flex-shrink:0;}
+.cl-text{font-size:.92rem;color:var(--white);}
+.cl-sub{font-size:.72rem;color:var(--muted);font-style:italic;margin-top:2px;}
+
+/* FOOTER */
+footer{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+  padding:24px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;z-index:2;
+}
+.footer-copy{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:1px;color:var(--muted);}
+.footer-tag{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:1px;color:var(--amber);}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav,.hero,.section,.contact-section,footer{padding-left:24px;padding-right:24px;}
+  .positioning{padding:24px;flex-direction:column;gap:16px;}
+  .pos-item{border-right:none;border-bottom:1px solid var(--border);padding:0 0 16px;}
+  .pos-item:last-child{border-bottom:none;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .exp-item,.edu-item{grid-template-columns:1fr;gap:8px;}
+  .projects-grid{grid-template-columns:1fr;}
+  .project-card.featured{grid-column:auto;grid-template-columns:1fr;}
+  .featured-visual{display:none;}
+  .hero-scroll-indicator{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">DMP // PORTFOLIO</a>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#work" class="nav-link">Work</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Analytical Product Manager</div>
+    <div class="hero-name">DHIRAJ<br><span>PATHORI</span></div>
+    <div class="hero-title">IIM BANGALORE &nbsp;·&nbsp; IIT BHU &nbsp;·&nbsp; ACCENTURE S&amp;C</div>
+    <p class="hero-bio">I build products at the intersection of data, strategy, and human behavior — translating complex systems into decisions that move numbers.</p>
+    <div class="hero-chips">
+      <span class="chip gold">GenAI &amp; Enterprise Adoption</span>
+      <span class="chip gold">Fintech / BFSI</span>
+      <span class="chip gold">B2B SaaS</span>
+      <span class="chip">FRM Part I Candidate</span>
+      <span class="chip">NLP / ML Engineering</span>
+      <span class="chip">Capital Markets</span>
+      <span class="chip">Management Consulting</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View Work →</a>
+      <a href="mailto:dhirajmpathori2001@gmail.com" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <div class="scroll-track"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- POSITIONING STRIP -->
+<div class="positioning">
+  <div class="pos-item">
+    <div class="pos-label">Currently</div>
+    <div class="pos-val">PGP 2024–26</div>
+    <div class="pos-sub">IIM Bangalore</div>
+  </div>
+  <div class="pos-item">
+    <div class="pos-label">Background</div>
+    <div class="pos-val">ML Engineering + Strategy</div>
+    <div class="pos-sub">IIT BHU → Accenture S&amp;C</div>
+  </div>
+  <div class="pos-item">
+    <div class="pos-label">Edge</div>
+    <div class="pos-val">Rare 3-stack</div>
+    <div class="pos-sub">Tech depth + Consulting rigor + Finance lens</div>
+  </div>
+  <div class="pos-item">
+    <div class="pos-label">Targeting</div>
+    <div class="pos-val">Product Management</div>
+    <div class="pos-sub">Fintech · GenAI · B2B SaaS</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-header fade-in">
+    <div class="section-num">01 &nbsp;· &nbsp;About</div>
+    <div class="section-title">THE ANALYTICAL <em>PM</em></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>Most PMs come from either <strong>engineering</strong> or <strong>business</strong>. I come from both — and with a finance layer on top. That combination isn't common, and it shows up in how I approach products.</p>
+      <p>At <em>Accenture Strategy & Consulting</em>, I didn't just build decks — I ran hypothesis-driven research across 1,500+ employee insights across 45+ countries to design a GenAI adoption framework deployed for 700K+ enterprise users. That's a product problem disguised as a consulting engagement.</p>
+      <p>Before that, at IIT BHU, I built NLP systems that processed 12,000+ resumes and saved $5M+ in operational costs. <em>That's when I realized I care more about what a system does than how it's built.</em></p>
+      <p>Now, as an FRM Part I candidate with capital markets exposure, I bring a risk and quantitative lens that most PMs don't have — especially relevant in fintech and BFSI contexts.</p>
+    </div>
+    <div class="skills-stack fade-in">
+      <div class="skill-group">
+        <div class="skill-group-label">Product</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Product Discovery</span>
+          <span class="skill-tag">PRD Writing</span>
+          <span class="skill-tag">User Research</span>
+          <span class="skill-tag">Roadmapping</span>
+          <span class="skill-tag">Hypothesis Testing</span>
+          <span class="skill-tag">Stakeholder Mgmt</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Technical</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">NLP / ML</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Pandas / NumPy</span>
+          <span class="skill-tag">Time-Series Models</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Finance</div>
+        <div class="skill-tags">
+          <span class="skill-tag">FRM Part I</span>
+          <span class="skill-tag">Capital Markets</span>
+          <span class="skill-tag">Risk Modeling</span>
+          <span class="skill-tag">Agri-Credit Analysis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Strategy &amp; Consulting</div>
+        <div class="skill-tags">
+          <span class="skill-tag">GenAI Adoption</span>
+          <span class="skill-tag">Enterprise Change Mgmt</span>
+          <span class="skill-tag">Workforce Segmentation</span>
+          <span class="skill-tag">Benchmarking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-header fade-in">
+    <div class="section-num">02 &nbsp;· &nbsp;Experience</div>
+    <div class="section-title">WHERE I'VE <em>WORKED</em></div>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item fade-in">
+      <div class="exp-left">
+        <div class="exp-period">Apr – May 2025</div>
+        <div class="exp-company">Accenture</div>
+        <div class="exp-type">Strategy &amp; Consulting</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Management Consulting Analyst — GenAI Adoption</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Designed GenAI adoption framework for global workforces; delivered phased rollout roadmap across 3 markets</div>
+          <div class="exp-bullet">Tested hypothesis agenda from 1,500+ employee insights across 45+ countries; prioritized 8 enterprise actions</div>
+          <div class="exp-bullet">Segmented client workforce into 5 behavioral personas; enabled focused rollout for 700K+ users</div>
+          <div class="exp-bullet">Benchmarked adoption models via 12 industry primers, 30+ cases; derived 9 enterprise patterns</div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">GenAI</span><span class="exp-tag">Workforce Strategy</span>
+          <span class="exp-tag">Change Management</span><span class="exp-tag">Persona Segmentation</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item fade-in">
+      <div class="exp-left">
+        <div class="exp-period">Jun – Jul 2023</div>
+        <div class="exp-company">My Analytics School</div>
+        <div class="exp-type">Data Science</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Science Intern — NLP &amp; Automation</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet">Built NLP Score Algorithm; preprocessed 1,500+ resumes; saved 15+ man-hours/week</div>
+          <div class="exp-bullet">Implemented Resume Ranking System; processed 12,000+ applicants; reduced operational costs by $5M+</div>
+          <div class="exp-bullet">Automated extraction of 20,000+ technical skills via ML; reduced running costs by $2M+</div>
+          <div class="exp-bullet">Achieved 88% accuracy in skills selection and 92% precision boost in recruitment evaluation</div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">NLP</span><span class="exp-tag">Python</span>
+          <span class="exp-tag">ML Algorithms</span><span class="exp-tag">Workflow Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="work">
+  <div class="section-header fade-in">
+    <div class="section-num">03 &nbsp;· &nbsp;Selected Work</div>
+    <div class="section-title">THREE <em>PROJECTS</em></div>
+  </div>
+  <div class="projects-grid fade-in">
+
+    <!-- Featured: GenAI -->
+    <div class="project-card featured">
+      <div>
+        <div class="project-num">01 / 03</div>
+        <div class="project-category">Consulting · Enterprise Product</div>
+        <div class="project-title">GENAI ADOPTION FRAMEWORK</div>
+        <p class="project-desc">Designed a 4-phase GenAI adoption lifecycle for a global enterprise workforce — from hypothesis testing across 1,500+ employee signals in 45+ countries to a behavioral persona segmentation enabling targeted rollout for 700K+ users across 6 industries.</p>
+        <div class="project-meta">
+          <span class="project-tag">Accenture S&amp;C</span>
+          <span class="project-tag">700K+ Users</span>
+          <span class="project-tag">5 Personas</span>
+          <span class="project-tag">4-Phase Lifecycle</span>
+          <span class="project-tag">25+ Firms</span>
+        </div>
+        <a href="https://docs.google.com/presentation/d/1rU3ese4QdLXqjVWLLOgwTx4nAddwIrYJ/edit" class="project-link" target="_blank">VIEW CASE STUDY →</a>
+      </div>
+      <div class="featured-visual">
+        <div class="grid-overlay"></div>
+        <div class="featured-visual-inner">
+          <div class="stat-display">700K+</div>
+          <div>ENTERPRISE USERS REACHED</div>
+          <div style="margin-top:8px;color:var(--amber);">45 COUNTRIES · 6 INDUSTRIES</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LILA -->
+    <div class="project-card" href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" target="_blank" onclick="window.open('https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/','_blank')">
+      <div class="project-num">02 / 03</div>
+      <div class="project-category">Game Analytics · Data Engineering</div>
+      <div class="project-title">LILA BLACK PLAYER JOURNEY VISUALIZER</div>
+      <p class="project-desc">Built a browser-based game analytics tool processing 89,000+ player telemetry events across 5 days of production data from an extraction shooter — visualizing movement trails, kill zones, heatmaps, and match replay for Level Designers.</p>
+      <div class="project-meta">
+        <span class="project-tag">Streamlit</span>
+        <span class="project-tag">Plotly</span>
+        <span class="project-tag">PyArrow</span>
+        <span class="project-tag">89K Events</span>
+        <span class="project-tag">3 Maps</span>
+      </div>
+      <a href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" class="project-link" target="_blank">OPEN LIVE TOOL →</a>
+    </div>
+
+    <!-- ShaktiDrive -->
+    <div class="project-card" onclick="window.open('SHAKTI_PLACEHOLDER','_blank')">
+      <div class="project-num">03 / 03</div>
+      <div class="project-category">Human-Centered Design · Social Impact</div>
+      <div class="project-title">SHAKTIDRIVE — WOMEN DRIVER ENABLEMENT</div>
+      <p class="project-desc">Research-driven product concept addressing India's &lt;2% women driver problem in ride-hailing — mixed-method research (126 survey responses + 4 interviews) leading to a 5-feature safety and enablement layer on top of Ola/Uber.</p>
+      <div class="project-meta">
+        <span class="project-tag">IIM Bangalore</span>
+        <span class="project-tag">User Research</span>
+        <span class="project-tag">Figma Prototype</span>
+        <span class="project-tag">Mixed Methods</span>
+        <span class="project-tag">Social Impact</span>
+      </div>
+      <a href="SHAKTI_PLACEHOLDER" class="project-link" target="_blank">VIEW CASE STUDY →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);">
+  <div class="section-header fade-in">
+    <div class="section-num">04 &nbsp;· &nbsp;Education</div>
+    <div class="section-title">WHERE I <em>STUDIED</em></div>
+  </div>
+  <div class="edu-list">
+    <div class="edu-item fade-in">
+      <div><div class="edu-year">2024–2026</div></div>
+      <div>
+        <div class="edu-inst">IIM Bangalore &nbsp;·&nbsp; Post Graduate Programme (MBA)</div>
+        <div class="edu-degree">Management — Product, Strategy, Finance</div>
+        <div class="edu-note">PPI Accenture S&amp;C · FRM Part I Candidate · Flipkart WiRED Product Track (Top 1/537 of 17.3K+ teams) · TEDxIIMB Curation &amp; Outreach Head · Designed 50+ time-series models for agri-credit risk exposure</div>
+      </div>
+    </div>
+    <div class="edu-item fade-in">
+      <div><div class="edu-year">2020–2024</div></div>
+      <div>
+        <div class="edu-inst">IIT (BHU) Varanasi &nbsp;·&nbsp; B.Tech Chemical Engineering</div>
+        <div class="edu-degree">CGPA 7.91 / 10</div>
+        <div class="edu-note">ML Engineer offer (Faxoc) · TO Hacks 2022 (Top 1/500, MLH) · Research Mentor guiding 33+ juniors to international research internships</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="fade-in">
+      <div class="contact-title">LET'S<br><em>TALK</em><br>PRODUCT.</div>
+      <p class="contact-sub">Open to PM internship and full-time conversations — Fintech, GenAI, B2B SaaS, and consulting-led product roles. I respond fast.</p>
+    </div>
+    <div class="contact-links fade-in">
+      <a href="mailto:dhirajmpathori2001@gmail.com" class="contact-link">
+        <div class="cl-icon">EMAIL</div>
+        <div><div class="cl-text">dhirajmpathori2001@gmail.com</div><div class="cl-sub">Best way to reach me</div></div>
+      </a>
+      <a href="tel:+919707801123" class="contact-link">
+        <div class="cl-icon">PHONE</div>
+        <div><div class="cl-text">+91 97078 01123</div><div class="cl-sub">Available 9AM–9PM IST</div></div>
+      </a>
+      <a href="https://linkedin.com/in/dhirajmohanpathori" class="contact-link" target="_blank">
+        <div class="cl-icon">LINKEDIN</div>
+        <div><div class="cl-text">linkedin.com/in/dhirajmohanpathori</div><div class="cl-sub">Connect &amp; follow</div></div>
+      </a>
+      <a href="https://github.com/DhirajMohanPathori" class="contact-link" target="_blank">
+        <div class="cl-icon">GITHUB</div>
+        <div><div class="cl-text">DhirajMohanPathori</div><div class="cl-sub">Code, tools &amp; projects</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2025 Dhiraj Mohan Pathori &nbsp;·&nbsp; Built from scratch, no templates</div>
+  <div class="footer-tag">THE ANALYTICAL PM</div>
+</footer>
+
+<script>
+// Cursor
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(2)';ring.style.borderColor='rgba(212,144,10,.6)';});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(212,144,10,.4)';});
+});
+
+// Scroll fade-in
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
