@@ -455,7 +455,7 @@ footer{
     </div>
     <div class="hero-cta">
       <a href="#work" class="btn-primary">View Work →</a>
-      <a href="mailto:dhirajmpathori2001@gmail.com" class="btn-secondary">Get in Touch</a>
+      <a href="/cdn-cgi/l/email-protection#d8bcb0b1aab9b2b5a8b9acb0b7aab1eae8e8e998bfb5b9b1b4f6bbb7b5" class="btn-secondary">Get in Touch</a>
     </div>
   </div>
   <div class="hero-scroll-indicator">
@@ -691,49 +691,9 @@ footer{
   </div>
 </section>
 
-<!-- LILA -->
-    <div class="project-card" href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" target="_blank" onclick="window.open('https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/','_blank')">
-      <div class="project-num">02 / 03</div>
-      <div class="project-category">Game Analytics · Data Engineering</div>
-      <div class="project-title">LILA BLACK PLAYER JOURNEY VISUALIZER</div>
-      <p class="project-desc">Built a browser-based game analytics tool processing 89,000+ player telemetry events across 5 days of production data from an extraction shooter — visualizing movement trails, kill zones, heatmaps, and match replay for Level Designers.</p>
-      <div class="project-meta">
-        <span class="project-tag">Streamlit</span>
-        <span class="project-tag">Plotly</span>
-        <span class="project-tag">PyArrow</span>
-        <span class="project-tag">89K Events</span>
-        <span class="project-tag">3 Maps</span>
-      </div>
-      <a href="https://lila-black-visualizer-afecddkbxdhp2msgw4dbgs.streamlit.app/" class="project-link" target="_blank">OPEN LIVE TOOL →</a>
-    </div>
 
-    <!-- GenAI -->
-    <div class="project-card">
-      <div>
-        <div class="project-num">01 / 03</div>
-        <div class="project-category">Consulting · Enterprise Product</div>
-        <div class="project-title">GENAI ADOPTION FRAMEWORK</div>
-        <p class="project-desc">Designed a 4-phase GenAI adoption lifecycle for a global enterprise workforce — from hypothesis testing across 1,500+ employee signals in 45+ countries to a behavioral persona segmentation enabling targeted rollout for 700K+ users across 6 industries.</p>
-        <div class="project-meta">
-          <span class="project-tag">Accenture S&amp;C</span>
-          <span class="project-tag">700K+ Users</span>
-          <span class="project-tag">5 Personas</span>
-          <span class="project-tag">4-Phase Lifecycle</span>
-          <span class="project-tag">25+ Firms</span>
-        </div>
-        <a href="https://docs.google.com/presentation/d/1rU3ese4QdLXqjVWLLOgwTx4nAddwIrYJ/edit" class="project-link" target="_blank">VIEW CASE STUDY →</a>
-      </div>
-      <div class="featured-visual">
-        <div class="grid-overlay"></div>
-        <div class="featured-visual-inner">
-          <div class="stat-display">700K+</div>
-          <div>ENTERPRISE USERS REACHED</div>
-          <div style="margin-top:8px;color:var(--amber);">45 COUNTRIES · 6 INDUSTRIES</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- CONTACT -->
+<!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-grid">
     <div class="fade-in">
@@ -742,38 +702,38 @@ footer{
     </div>
     <div class="contact-links fade-in">
       <a href="mailto:dhirajmpathori2001@gmail.com" class="contact-link">
-        <div class="cl-icon">EMAIL</div>
+        <div class="cl-label">EMAIL</div>
         <div><div class="cl-text">dhirajmpathori2001@gmail.com</div><div class="cl-sub">Best way to reach me</div></div>
       </a>
       <a href="tel:+919707801123" class="contact-link">
-        <div class="cl-icon">PHONE</div>
+        <div class="cl-label">PHONE</div>
         <div><div class="cl-text">+91 97078 01123</div><div class="cl-sub">Available 9AM–9PM IST</div></div>
       </a>
       <a href="https://linkedin.com/in/dhirajmohanpathori" class="contact-link" target="_blank">
-        <div class="cl-icon">LINKEDIN</div>
+        <div class="cl-label">LINKEDIN</div>
         <div><div class="cl-text">linkedin.com/in/dhirajmohanpathori</div><div class="cl-sub">Connect &amp; follow</div></div>
       </a>
       <a href="https://github.com/DhirajMohanPathori" class="contact-link" target="_blank">
-        <div class="cl-icon">GITHUB</div>
+        <div class="cl-label">GITHUB</div>
         <div><div class="cl-text">DhirajMohanPathori</div><div class="cl-sub">Code, tools &amp; projects</div></div>
       </a>
     </div>
   </div>
 </section>
 
+
 <footer>
   <div class="footer-copy">© 2025 Dhiraj Mohan Pathori &nbsp;·&nbsp; Built from scratch, no templates</div>
   <div class="footer-tag">THE ANALYTICAL PM</div>
 </footer>
 
+
 <script>
-// Cursor
-const cursor=document.getElementById('cursor');
-const ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
-function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
-animRing();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(2)';ring.style.borderColor='rgba(212,144,10,.6)';});
-  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';
+// Fade in on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.08});
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
